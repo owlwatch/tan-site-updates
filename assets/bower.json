@@ -1,0 +1,31 @@
+{
+  "name": "tan",
+  "version": "1.0.0",
+  "authors": [
+    "Mark Fabrizio <fabrizim@owlwatch.com>"
+  ],
+  "description": "Travel Advantage Network",
+  "main": "css/front.css",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.1",
+    "imagemapster": "*",
+    "jquery-ui": "~1.11.2",
+    "swiper": "~2.7.0",
+    "jquery.scrollTo": "~1.4.14",
+    "magnific-popup": "~0.9.9",
+    "history.js": "~1.8.0",
+    "jquery.expander": "~1.4.13",
+    "readmore": "*",
+    "handlebars": "~2.0.0",
+    "jquery.cookie": "~1.4.1",
+    "placeholders": "~3.0.2"
+  }
+}

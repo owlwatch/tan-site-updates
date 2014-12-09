@@ -1,0 +1,80 @@
+{
+	"IcoMoonType": "selection",
+	"icons": [
+		{
+			"icon": {
+				"paths": [
+					"M810.667 273.707l-60.373-60.373-238.293 238.293-238.293-238.293-60.373 60.373 238.293 238.293-238.293 238.293 60.373 60.373 238.293-238.293 238.293 238.293 60.373-60.373-238.293-238.293z"
+				],
+				"attrs": [],
+				"tags": [
+					"close"
+				],
+				"grid": 24
+			},
+			"attrs": [],
+			"properties": {
+				"id": 681,
+				"order": 2,
+				"prevSize": 24,
+				"code": 58880,
+				"name": "close"
+			},
+			"setIdx": 0,
+			"iconIdx": 681
+		},
+		{
+			"icon": {
+				"paths": [
+					"M707.627 366.293l-195.627 195.627-195.627-195.627-60.373 60.373 256 256 256-256z"
+				],
+				"attrs": [],
+				"tags": [
+					"expand-more"
+				],
+				"grid": 24
+			},
+			"attrs": [],
+			"properties": {
+				"id": 683,
+				"order": 1,
+				"prevSize": 24,
+				"code": 58881,
+				"name": "expand-more"
+			},
+			"setIdx": 0,
+			"iconIdx": 683
+		}
+	],
+	"height": 1024,
+	"metadata": {
+		"name": "tan"
+	},
+	"preferences": {
+		"showGlyphs": true,
+		"showQuickUse": true,
+		"showQuickUse2": true,
+		"showSVGs": true,
+		"fontPref": {
+			"prefix": "tan-icon-",
+			"metadata": {
+				"fontFamily": "tan",
+				"majorVersion": 1,
+				"minorVersion": 0
+			},
+			"metrics": {
+				"emSize": 1024,
+				"baseline": 6.25,
+				"whitespace": 50
+			}
+		},
+		"imagePref": {
+			"prefix": "icon-",
+			"png": true,
+			"useClassSelector": true
+		},
+		"historySize": 100,
+		"showCodes": true,
+		"search": ""
+	}
+}

@@ -1,0 +1,13 @@
+{
+  "name" : "owlwatch/tan",
+  "description" : "Test TAN replacements",
+  "autoload" : {
+    "psr-4" : {
+      "Tan\\" : "src"
+    }
+  },
+  "require" : {
+    "jenssegers/proxy" : "2.*",
+    "oyejorge/less.php": "1.7"
+  }
+}

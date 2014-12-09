@@ -1,0 +1,75 @@
+.tan-select-wrap {
+  position: relative;
+  height: 2.6em;
+  padding: .8em;
+  margin: 20px 0;
+  z-index: 1000;
+  .active-label {
+    position: relative;
+    &:after {
+      font-family: FontAwesome;
+      position: absolute;
+      right: 0;
+      top: 0;
+      line-height: 1.2em;
+      content: '\f107';
+    }
+  }
+  .tan-select {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: .8em;
+    height: 3em;
+    line-height: 1.2em;
+    border: 1px solid #cbcbcb;
+    border-radius: 6px;
+    overflow: hidden;
+    ul {
+      margin: 1em 0 0 0;
+      padding: 0;
+      li {
+        padding: 0;
+        list-style: none;
+        margin: 0;
+        line-height: 1.4em;
+        a {
+          color: #323232;
+          display: block;
+          &:hover {
+            color: @color-bright-blue;
+          }
+        }
+      }
+      max-height: 1.4em * 7;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      &::-webkit-scrollbar {
+        -webkit-appearance: none;
+      }
+      
+      &::-webkit-scrollbar:vertical {
+          width: 11px;
+      }
+      
+      &::-webkit-scrollbar:horizontal {
+          height: 11px;
+      }
+      
+      &::-webkit-scrollbar-thumb {
+          border-radius: 8px;
+          border: 2px solid #f6f6f6; /* should match background, can't be transparent */
+          background-color: rgba(0, 0, 0, .5);
+      }
+      
+      &::-webkit-scrollbar-corner {
+        
+      }
+    }
+    &:hover, &.open {
+      background: #f6f6f6;
+      cursor: pointer;
+    }
+  }
+}
