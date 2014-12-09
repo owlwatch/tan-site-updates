@@ -191,10 +191,16 @@ jQuery(function($){
         var $btn = $(e.currentTarget),
             _this = this
             
+        this.currentRoom = $btn.parents('.room').data('details');
+            
         TAN.user.isLoggedIn()
           .done(function(result){
             if ( !result ) {
               _this.slideToPanel('login', true);
+            }
+            else {
+              // open the confirmation modal
+              TAN.cart().add({room:room, date:date});
             }
           });
       },
@@ -268,6 +274,10 @@ jQuery(function($){
 
         this.$el.find('[data-booking-panel="book"] .panel-content')
           .html( this.tmpl.book(vars) );
+        
+      },
+      
+      openConfirmation : function(){
         
       }
       

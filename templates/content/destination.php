@@ -241,7 +241,7 @@ $images = array(
               <div class="dates">{{dates}}</div>
               <ul class="rooms">
                 {{#each rooms}}
-                <li class="room">
+                <li class="room" data-index="{{@index}}">
                   <h5>{{bedrooms}} BDRM</h5>
                   <div class="detail">
                     <span class="name">Room Rate:</span>
@@ -293,5 +293,4 @@ $images = array(
     </div>
   </div>
 </div>
-
 <script src="/assets/js/destination.js"></script>
