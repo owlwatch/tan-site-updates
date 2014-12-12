@@ -1,8 +1,22 @@
+/**
+ * TAN Adapter
+ *
+ * This file is intended to contain the logic that interacts
+ * with the TAN database / server.
+ *
+ * All the functions in the adapter return deferred objects,
+ * see http://api.jquery.com/category/deferred-object/. Since
+ * $.ajax calls return deferred objects, you can return those
+ * directly if necessary.
+ *
+ * This file currently contains dummy logic and all the functions
+ * need to be implemented with production TAN logic.
+ * 
+ */
+
 window.TAN = window.TAN || {};
-if ( !TAN.Adapter ) {
-  //code
-  TAN.Adapter = {};
-}
+if ( !TAN.Adapter ) TAN.Adapter = {};
+
 (function($, exports){
   
   var fakeUser = {
@@ -33,8 +47,11 @@ if ( !TAN.Adapter ) {
        *   time: string in format YYYY-MM
        *   region: comma separated string of region ids
        *   activity: string
+       *
+       * The callback should pass a single parameter "html" - HTML with the a "destination-grid" block
        *   
-       * @param {object}    filters  - filters to use for 
+       * @param {object}    filters  - filters to use for the query
+       * @return {promise}  promise
        * 
        */
       getDestinations : function( filters ){
@@ -43,22 +60,48 @@ if ( !TAN.Adapter ) {
     },
     
     user : {
-      isLoggedIn : function(done, fail, always){
+      
+      /**
+       * Return a boolean indicating whether or not the user is logged
+       * in.
+       *
+       * The callback should return a single boolean
+       *
+       * @return {promise}  promise
+       */
+      isLoggedIn : function(){
         var deferred = $.Deferred();
         deferred.resolve($.cookie('logged-in'));
         return deferred.promise();
       },
       
+      /**
+       * Return a boolean indicating whether or not the user is logged
+       * in.
+       *
+       * A successfully callback should pass a "success" parameter and
+       * a "user" parameter
+       *
+       * @param {string}    username
+       * @param {string}    password
+       *
+       * @return {promise}  promise
+       */
       authenticate : function(username, password){
         
         $.cookie('logged-in', '1', {path:'/'});
-        $(window).trigger('auth.tan', [true] )
+        $(window).trigger('auth.tan', [true, fakeUser] )
         
         var deferred = $.Deferred();
-        deferred.resolve(true);
+        deferred.resolve(true, fakeUser);
         return deferred.promise();
       },
       
+      /**
+       * Log the user out
+       *
+       * @return {promise}  promise
+       */
       logout : function(){
         $.removeCookie('logged-in');
         $(window).trigger('logout.tan', [true] )
@@ -70,6 +113,9 @@ if ( !TAN.Adapter ) {
     },
     
     cart : {
+      /**
+       * Add an item to the cart
+       */
       add : function(item){
         
         if ( window.localStorage ) {
@@ -91,6 +137,11 @@ if ( !TAN.Adapter ) {
         response.resolve(true);
         return response;
       },
+      
+      /**
+       * Remove an item at the specified array index from the
+       * cart
+       */
       removeAt : function(index){
         var response = $.Deferred();
         
@@ -108,6 +159,9 @@ if ( !TAN.Adapter ) {
         return response.promise();
       },
       
+      /**
+       * Retrieve the stored shopping cart and pass it to the callback.
+       */
       sync : function(){
         var response = $.Deferred();
         if ( window.localStorage && window.localStorage.cart ) {

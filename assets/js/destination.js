@@ -137,7 +137,7 @@ jQuery(function($){
         this.$el.on('click', '[data-booking-slide]',$.proxy(this.onSlideClick, this));
         this.$el.on('click', '[data-action="book"]', $.proxy(this.onBookClick, this));
         this.$el.on('submit', '[data-action="login"]', $.proxy(this.onLogin, this));
-        $(window).on('auth.tan', this.addQueuedItem );
+        $(window).on('auth.tan', $.proxy(this.addQueuedItem, this));
       },
       
       slideToPanel : function(name, dir){
