@@ -5,10 +5,12 @@
 
 <script src="//use.typekit.net/zmv6suh.js"></script>
 <script>try{Typekit.load();}catch(e){}</script>
+
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="/assets/bower_components/jquery-ui/themes/ui-lightness/jquery-ui.min.css" />
 <link rel="stylesheet" href="/assets/bower_components/swiper/dist/idangerous.swiper.css" />
 <link rel="stylesheet" href="/assets/bower_components/magnific-popup/dist/magnific-popup.css" />
+
 <?php
 // lets compile our stylesheet
 $less_files = array(TAN_DIR.'/less/index.less' => '/assets/css/');
@@ -34,8 +36,8 @@ copy( TAN_DIR.'/tmp/'.$css_file_name, TAN_DIR.'/assets/css/front.css');
 <script src="/assets/bower_components/handlebars/handlebars.min.js"></script>
 <script src="/assets/js/jquery.placeholders.js"></script>
 <script src="/assets/js/adapter.js"></script>
-<script src="/assets/js/cart.js"></script>
 <script src="/assets/js/destination-browser.js"></script>
+<script src="/assets/js/cart.js"></script>
 <script src="/assets/js/site.js"></script>
 
 <!--[if lt IE 9]>

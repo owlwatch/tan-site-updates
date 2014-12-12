@@ -18,7 +18,7 @@
 @import "@{bootstrap-dir}/buttons.less";
 
 @import "@{bootstrap-dir}/component-animations.less";
-
+@import "@{bootstrap-dir}/modals.less";
 @import "@{bootstrap-dir}/alerts.less";
 @import "@{bootstrap-dir}/close.less";
 
@@ -34,4 +34,33 @@
 
 .btn-secondary {
   .button-variant( #fff, @color-brown, transparent );
+}
+
+.tan-modal {
+  .modal-dialog {
+    width: 750px;
+  }
+  .modal-header {
+    border-bottom-width: 0;
+  }
+  .modal-footer {
+    text-align: left;
+    border-top: 0;
+  }
+  .modal-body {
+    color: #656565;
+    h2 {
+      color: @color-dark-orange;
+      font-size: 17px;
+      font-weight: 600;
+    }
+    > *, .row > div > *{
+      &:first-child {
+        margin-top: 0;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
 }

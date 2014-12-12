@@ -1,4 +1,8 @@
 window.TAN = window.TAN || {};
+if ( !TAN.Adapter ) {
+  //code
+  TAN.Adapter = {};
+}
 (function($, exports){
   
   var fakeUser = {
@@ -8,6 +12,12 @@ window.TAN = window.TAN || {};
       account   :1
     }
   };
+  
+  function success(){
+    var response = $.Deferred();
+    response.resolve.apply(response, arguments);
+    return response;
+  }
   
   $.extend( exports, {
     
@@ -46,7 +56,60 @@ window.TAN = window.TAN || {};
         deferred.resolve(true);
         return deferred.promise();
       }
+    },
+    
+    cart : {
+      add : function(item){
+        
+        if ( window.localStorage ) {
+          var cart = window.localStorage.cart;
+          if ( !cart ) {
+            cart = [];
+          }
+          else{
+            cart = JSON.parse( cart );
+            if ( !$.isArray(cart) ) cart=[];
+          }
+          cart.push(item);
+          window.localStorage.cart = JSON.stringify( cart );
+        }
+        
+        var response = $.Deferred();
+        response.resolve(true);
+        return response;
+      },
+      removeAt : function(index){
+        
+        if ( window.localStorage && window.localStorage.cart ) {
+          var cart = window.localStorage.cart;
+          cart = JSON.parse( cart );
+          if ( cart && cart.length && index < cart.length) {
+            cart.splice(index,1);
+            window.localStorage.cart = JSON.stringify( cart );
+          }
+        }
+        
+        var response = $.Deferred();
+        response.resolve(true);
+        return response;
+      },
+      
+      sync : function(){
+        var response = $.Deferred();
+        if ( window.localStorage && window.localStorage.cart ) {
+          var cart = JSON.parse( window.localStorage.cart );
+          if( cart && $.isArray(cart) ) response.resolve( cart );
+          else {
+            response.resolve([]);
+          }
+        }
+        else {
+          response.resolve([])
+        }
+        
+        return response;
+      }
     }
     
   });
-})(jQuery, window.TAN);
+})(jQuery, window.TAN.Adapter );

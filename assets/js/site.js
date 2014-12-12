@@ -1,3 +1,15 @@
+Handlebars.registerHelper('attrs', function(options) {
+	var attrs = [];
+  for (var prop in options.hash) {
+    attrs.push(
+        Handlebars.escapeExpression(prop) + '="'
+        + Handlebars.escapeExpression(options.hash[prop]) + '"');
+  }
+  return new Handlebars.SafeString(
+    attrs.join(' ')
+  );
+});
+
 jQuery(function($){
 	
 	if ( !window.TAN ) {
@@ -6,7 +18,7 @@ jQuery(function($){
 	
 	(function user_menu(){
 		$(window).on('auth.tan', function(e, user){
-			console.log(user);
+			
 		});
 	})();
 	

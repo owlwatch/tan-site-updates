@@ -31,18 +31,11 @@
   
   $.extend( Browser.prototype, {
     
-    bind : function(handler){
-      var _this = this;
-      return function bound(){
-        return handler.apply(_this, arguments);
-      }
-    },
-    
     initEvents : function(){
-      this.$el.on('click', this.options.itemSelector, this.bind(this.onGridItemClick) );
-      this.$el.on('click', '[data-toggle="browser"]', this.bind(this.onCloseClick) );
-      this.$el.on('click', '[data-browser-nav]', this.bind(this.onNavClick) );
-      $(document).on('keydown', this.bind(this.onKeyDown));
+      this.$el.on('click', this.options.itemSelector, $.proxy(this.onGridItemClick, this) );
+      this.$el.on('click', '[data-toggle="browser"]', $.proxy(this.onCloseClick, this) );
+      this.$el.on('click', '[data-browser-nav]', $.proxy(this.onNavClick, this) );
+      $(document).on('keydown', $.proxy(this.onKeyDown, this));
     },
     
     onGridItemClick : function(e){

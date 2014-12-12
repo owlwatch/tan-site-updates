@@ -34,7 +34,13 @@ jQuery(function($){
       id: 18, title: "the Caribbean"
     }
   };
-
+  
+  //var resultsTmpl = Handlebars.compile( $('#results-tmpl').html() );
+  /*
+  $('.default-default-results .results').html(
+    resultsTmpl({results: $('.default-default-results').data('results')})
+  );
+  */
   
   function getParams(){
     var params = {};
@@ -113,9 +119,10 @@ jQuery(function($){
       $('.destination-results .search .search-results')
         .html('<div class="loading"><i class="fa fa-spin fa-spinner"></i></div>');
       
-      TAN.remote.getDestinations( params )
-        .done(function success(html){
-          $('.destination-results .search .search-results').html(html);
+      TAN.Adapter.remote.getDestinations( params )
+        .done(function success(results){
+          //$('.destination-results .search .search-results').html(resultsTmpl({results: results}));
+          $('.destination-results .search .search-results').html( results );
         })
         
         .fail(function failure(){

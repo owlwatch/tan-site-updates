@@ -44,10 +44,12 @@
   </div>
 </div>
 
-<div class="modal fade" id="booking-confirmation-window">
+<div class="modal fade out tan-modal" id="cart-modal">
   <div class="modal-dialog">
     <div class="modal-content">
-      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i><span class="sr-only">Close</span></button>
+      </div>
       <div class="modal-body">
         
         <script class="body-tmpl" type="text/x-handlebars-template">
@@ -56,38 +58,64 @@
   
           <p>You have 15 minutes to complete this booking. If you need more time, you may also place a 24 hour hold on any property. A non-refundable deposit of $25.00 is required.
           Please select an option below to continue:</p>
+          {{#if highlight_property}}
+            {{#with highlight_property}}
+              {{> property_modal}}
+            {{/with}}
+            
+            {{#if more_properties.length}}
+              <div class="more-properties-toggle">
+                <a data-toggle="collapse" target="#booking-modal-more-properties">
+                  View all selected properties
+                </a>
+              </div>
+              <div id="booking-modal-more-properties">
+                {{#each more_properties}}
+                  {{> property_modal}}
+                {{/each}}
+              </div>
+            {{/if}}
+            
+          {{else}}
+            {{#each properties}}
+              {{> property_modal}}
+            {{/each}}
+          {{/if}}
           
-          <div class="row">
+          
+        </script>
+        <script class="property-tmpl" type="text/x-handlebars-template">
+          <div class="row property-row">
             <div class="col-xs-3">
-              <img src="{{thumb}}" />
+              <img src="{{property.thumb}}" />
             </div>
-            <div class="col-xs-6">
-              <h3>{{title}} ({{bedrooms}} BDRM)</h3>
+            <div class="col-xs-5">
+              <h5>{{property.title}} ({{room.bedrooms}} BDRM)</h5>
               <div class="detail">
                 <span class="name">Dates:</span>
                 <span class="value">{{dates}}</span>
               </div>
               <div class="detail">
                 <span class="name">Room Rate:</span>
-                <span class="value">{{rate}}/week</span>
+                <span class="value">{{room.rate}}/week</span>
               </div>
               <div class="detail checkbox">
                 <label>
-                  <input type="checkbox" name="vap" {{#if vapChecked}}checked="checked"{{/if}} />
+                  <input type="checkbox" name="vap" {{#if vapEnabled}}checked="checked"{{/if}} />
                   <span class="name">VAP ?:</span>
-                  <span class="value">{{vapAmount}}</span>
+                  <span class="value">{{room.vap}}</span>
                 </label>
               </div>
               
-              <div class="timing-info">
-                Complete this booking within <span class="time-remaining" data-expiration-time="{{expires}}"></span>
+              <div class="timing-remaining" data-expiration="{{expires}}">
+                Complete this booking within <span data-time="true"></span>
               </div>
               
               <div class="cancel">
-                <a href="#" data-action="cancel" class="cancel-room">Cancel</a>
+                <a href="#" data-action="cancel" data-index="{{index}}" class="cancel-room">Cancel</a>
               </div>
             </div>
-            <div class="col-xs-3">
+            <div class="col-xs-4">
               <div class="buttons">
                 <a class="btn btn-block btn-success" data-action="check-out">Check Out Now</a>
                 <a class="btn btn-block btn-secondary" data-action="hold">Hold for 24 Hours</a>
@@ -96,6 +124,73 @@
           </div>
         </script>
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close &amp; Continue Browsing</button>
+      </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<div id="cart-footer">
+  <div class="page">
+    <div class="items swiper-container ">
+      <div class="swiper-wrapper">
+        
+      </div>
+    </div>
+    <div class="col-xs-1 view-all-container">
+    </div>
+    <script class="view-all-tmpl" type="text/x-handlebars-template">
+      <div class="nav-container">
+        <a class="property-nav prev" href="#" data-nav="prev"><i class="fa fa-angle-left"></i></a>
+        <span class="nav-info">
+          <span class="cur">{{cur}}</span>/<span class="total">{{total}}</span>
+        </span>
+        <a class="property-nav next" href="#" data-nav="next"><i class="fa fa-angle-right"></i></a>
+      </div>
+      <a href="#cart-modal" data-toggle="modal" >View All</a>
+    </script>
+    <script class="property-tmpl" type="text/x-handlebars-template">
+      <div class="row property-row" data-index="{{index}}">
+        <div class="col-xs-11">
+          <div class="row">
+            <div class="col-xs-7">
+              <div class="row">
+                <div class="col-xs-3">
+                  <button class="btn btn-lg btn-green btn-block" data-action="checkout">
+                    Check Out
+                  </button>
+                </div>
+                <div class="col-xs-5 title-column">
+                  <h5>{{property.title}} ({{room.bedrooms}} BDRM)</h5>
+                  <h6>{{dates}}</h6>
+                </div>
+                <div class="col-xs-4 rate-column">
+                  <div class="detail">
+                    <span class="name">Room Rate:</span>
+                    <span class="value">{{room.rate}}/week</span>
+                  </div>
+                  <div class="detail checkbox">
+                    <label>
+                      <input type="checkbox" name="vap" {{#if vapEnabled}}checked="checked"{{/if}} />
+                      <span class="name">VAP ?:</span>
+                      <span class="value">{{room.vap}}</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-xs-5 countdown-column">
+              <p class="time-remaining" data-expiration="">
+                This property is on hold for <span data-time="true"></span>
+              </p>
+              <p><a href="#" data-action="cancel" data-index="{{index}}" class="cancel-room">Cancel</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+    <script 
+  </div>
+</div>

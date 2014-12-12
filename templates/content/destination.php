@@ -1,14 +1,7 @@
 <?php
-$images = array(
-  'DSC00459',
-  'Fire-Pit',
-  'HMO-11872_Exterior4',
-  'IMG_5387',
-  'One-Bed-Studio-3',
-  'Village-Marina-3',
-  'West-Coast-FL-September-2012-037',
-  'Woodfield-exterior_03'
-);
+
+$property = \Tan\Utility::generateProperty();
+
 ?>
 <div class="clearfix two-column-layout destination-page">
   <div class="main-column">
@@ -17,10 +10,10 @@ $images = array(
         <div class="swiper-wrapper">
           <!-- slides here -->
           <?php
-          foreach( $images as $image ){
+          foreach( $property->images as $image ){
             ?>
           <div class="swiper-slide">
-            <img src="/assets/images/properties/<?= $image ?>-full.jpg" />
+            <img src="<?= $image->full ?>" />
           </div>  
             <?php
           }
@@ -39,11 +32,11 @@ $images = array(
       <div class="thumbnails">
         <div class="row">
           <?php
-          foreach( $images as $i => $image ){
+          foreach( $property->images as $i => $image ){
             ?>
           <div class="col-xs-3">
-            <a href="/assets/images/properties/<?= $image ?>-full.jpg" data-image-index="<?= $i ?>" class="<?= $i === 0 ? 'active' : '' ?>">
-              <img src="/assets/images/properties/<?= $image ?>-thmb.jpg" />
+            <a href="<?= $image->full ?>" data-image-index="<?= $i ?>" class="<?= $i === 0 ? 'active' : '' ?>">
+              <img src="<?= $image->thmb ?>" />
             </a>
           </div>
             <?php
@@ -96,31 +89,11 @@ $images = array(
           <div class="row">
             <div class="col-xs-6">
               <h4>Resort Amenities</h4>
-              <p>* Multi-level resort with no elevator. Please contact a Travel Advocate
-                  if you need special accommodations.</p>
-              <ul class="no-margin-list">
-                  
-                <li>Hot Tub Onsite
-                <li>Laundry Onsite
-                <li>Outdoor Pool Onsite
-
-              </ul>
-              
-              
+              <?= $property->amenities->resort ?>
             </div>
             <div class="col-xs-6">
               <h4>Unit Amenities</h4>
-              <p>* Not all rooms have all amenities</p>
-              <ul class="no-margin-list">
-                <li>2nd Floor
-                <li>Air Conditioning
-                <li>Balcony or Patio
-                <li>Cable or Satellite
-                <li>DVD/VCR Combo
-                <li>Full Kitchen 
-                <li>No Phone
-              </ul>
-              
+              <?= $property->amenities->unit ?>
             </div>
           </div>
         </div>
@@ -156,25 +129,31 @@ $images = array(
       
       <div class="destination-info">
         
-        <h1 class="destination-title">Summerspell</h1>
+        <h1 class="destination-title"><?= $property->title ?></h1>
         
         <div class="address">
-          <span class="street">2396 Old Scenic Highway 98</span><br />
-          <span class="city">Miramar Beach</span>, <span class="state">Florida</span>
+          <span class="street"><?= $property->address ?></span><br />
+          <span class="city"><?= $property->city ?></span>, <span class="state"><?= $property->state ?></span>
         </div>
         
         <div class="check-in-out">
           <strong class="info-label">Check-in/out:</strong>
-          Sunday-Sunday
+          <?= $property->checkinDay ?> - <?= $property->checkinDay ?>
         </div>
         
         <div class="unit-sizes">
           <strong class="info-label">Unit Size(s):</strong>
-          1 BR, 2 BR
+          <?php
+          $rooms = array();
+          foreach( $property->rooms as $room ){
+            $rooms[] = $room['bedrooms'].' BR';
+          }
+          echo implode(', ', $rooms);
+          ?>
         </div>
       </div>
       
-      <div class="booking-widget open">
+      <div class="booking-widget open" data-property="<?= htmlspecialchars( json_encode( $property, ENT_QUOTES ) ) ?>">
         <button type="button" class="btn btn-block btn-success btn-lg widget-toggle" data-toggle="booking-widget">
           View Available Dates
         </button>
