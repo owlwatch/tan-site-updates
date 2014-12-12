@@ -13,6 +13,8 @@ if ( !TAN.Adapter ) {
     }
   };
   
+  var id = 0;
+  
   function success(){
     var response = $.Deferred();
     response.resolve.apply(response, arguments);
@@ -70,6 +72,8 @@ if ( !TAN.Adapter ) {
             cart = JSON.parse( cart );
             if ( !$.isArray(cart) ) cart=[];
           }
+          item.expiration = new Date().getTime() + (1000 * 60 * 15);
+          item.uid = new Date().getTime()+'-'+(id++);
           cart.push(item);
           window.localStorage.cart = JSON.stringify( cart );
         }
@@ -79,19 +83,20 @@ if ( !TAN.Adapter ) {
         return response;
       },
       removeAt : function(index){
+        var response = $.Deferred();
         
         if ( window.localStorage && window.localStorage.cart ) {
           var cart = window.localStorage.cart;
           cart = JSON.parse( cart );
           if ( cart && cart.length && index < cart.length) {
-            cart.splice(index,1);
+            
+            var removed = cart.splice(index,1);
+            response.resolve(index, removed[0] );
             window.localStorage.cart = JSON.stringify( cart );
           }
         }
         
-        var response = $.Deferred();
-        response.resolve(true);
-        return response;
+        return response.promise();
       },
       
       sync : function(){

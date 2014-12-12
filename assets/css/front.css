@@ -5723,6 +5723,7 @@ fieldset[disabled] .btn-green.active {
   border-radius: 0 0 6px 6px;
   overflow: hidden;
   position: relative;
+  height: 0;
 }
 .booking-widget.open .booking-widget-content {
   border: 1px solid #cbcbcb;
@@ -5824,7 +5825,21 @@ body.has-cart .bd {
   padding-bottom: 100px;
 }
 .cancel-room {
-  color: #d9534f;
+  color: #9B022A;
+  font-weight: 200;
+  text-decoration: underline;
+}
+.hold-room {
+  color: #656565;
+  text-decoration: underline;
+  margin-left: 1em;
+  font-weight: 200;
+}
+.time-remaining {
+  font-weight: 600;
+}
+.time-remaining.text-success {
+  color: #73AE1F;
 }
 #cart-modal {
   font-size: 14px;
@@ -5844,6 +5859,16 @@ body.has-cart .bd {
   background: #cbcbcb;
   height: 1px;
   overflow: hidden;
+}
+#cart-modal .more-properties-toggle {
+  padding: 15px 0;
+  border-top: 1px solid #cbcbcb;
+  border-bottom: 1px solid #cbcbcb;
+  margin: 20px 0;
+  font-size: 16px;
+}
+#cart-modal .more-properties-toggle.open {
+  border-bottom: 0;
 }
 #cart-footer {
   font-size: 14px;
@@ -5893,6 +5918,10 @@ body.has-cart .bd {
 #cart-footer .view-all-container .nav-container .nav-info {
   display: inline-block;
   padding: 0 4px;
+}
+#cart-footer .rate-column {
+  border-left: 1px solid #cbcbcb;
+  border-right: 1px solid #cbcbcb;
 }
 .page {
   position: relative;

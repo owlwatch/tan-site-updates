@@ -153,7 +153,7 @@ $property = \Tan\Utility::generateProperty();
         </div>
       </div>
       
-      <div class="booking-widget open" data-property="<?= htmlspecialchars( json_encode( $property, ENT_QUOTES ) ) ?>">
+      <div class="booking-widget" data-property="<?= htmlspecialchars( json_encode( $property, ENT_QUOTES ) ) ?>">
         <button type="button" class="btn btn-block btn-success btn-lg widget-toggle" data-toggle="booking-widget">
           View Available Dates
         </button>

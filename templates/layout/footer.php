@@ -65,11 +65,11 @@
             
             {{#if more_properties.length}}
               <div class="more-properties-toggle">
-                <a data-toggle="collapse" target="#booking-modal-more-properties">
-                  View all selected properties
+                <a data-toggle="collapse" href="#booking-modal-more-properties">
+                  View all selected properties <i class="fa fa-angle-right"></i>
                 </a>
               </div>
-              <div id="booking-modal-more-properties">
+              <div id="booking-modal-more-properties" class="collapse">
                 {{#each more_properties}}
                   {{> property_modal}}
                 {{/each}}
@@ -85,7 +85,7 @@
           
         </script>
         <script class="property-tmpl" type="text/x-handlebars-template">
-          <div class="row property-row">
+          <div class="row property-row" data-uid="{{uid}}">
             <div class="col-xs-3">
               <img src="{{property.thumb}}" />
             </div>
@@ -107,12 +107,12 @@
                 </label>
               </div>
               
-              <div class="timing-remaining" data-expiration="{{expires}}">
+              <div class="time-remaining" data-expiration="{{expiration}}">
                 Complete this booking within <span data-time="true"></span>
               </div>
               
               <div class="cancel">
-                <a href="#" data-action="cancel" data-index="{{index}}" class="cancel-room">Cancel</a>
+                <a href="#" data-action="cancel" data-uid="{{uid}}" class="cancel-room">Cancel</a>
               </div>
             </div>
             <div class="col-xs-4">
@@ -148,10 +148,10 @@
         </span>
         <a class="property-nav next" href="#" data-nav="next"><i class="fa fa-angle-right"></i></a>
       </div>
-      <a href="#cart-modal" data-toggle="modal" >View All</a>
+      <a href="#cart-modal" data-toggle="modal">View All</a>
     </script>
     <script class="property-tmpl" type="text/x-handlebars-template">
-      <div class="row property-row" data-index="{{index}}">
+      <div class="row property-row" data-uid="{{uid}}">
         <div class="col-xs-11">
           <div class="row">
             <div class="col-xs-7">
@@ -182,10 +182,13 @@
             </div>
             
             <div class="col-xs-5 countdown-column">
-              <p class="time-remaining" data-expiration="">
+              <div class="time-remaining" data-expiration="{{expiration}}">
                 This property is on hold for <span data-time="true"></span>
-              </p>
-              <p><a href="#" data-action="cancel" data-index="{{index}}" class="cancel-room">Cancel</a></p>
+              </div>
+              <div>
+                <a href="#" data-action="cancel" data-uid="{{uid}}" class="cancel-room">Cancel</a>
+                <a href="#"  data-action="hold" class="hold-room">Hold for 24 hours (deposit required)</a>
+              </div>
             </div>
           </div>
         </div>
