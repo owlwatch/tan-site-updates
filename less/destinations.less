@@ -197,7 +197,7 @@
         }
         .location {
           color: #323232;
-          font-size: 12px;
+          font-size: 13px;
         }
       }
     }
@@ -556,6 +556,130 @@
     h5 {
       color: #656565;
       font-weight: 600;
+    }
+  }
+}
+
+#excess-inventory {
+  .panel {
+    .box-shadow(0 0 0);
+  }
+  .panel-heading {
+    position: relative;
+    padding-left: 30px;
+    h4 {
+      a {
+        color: @color-dark-blue;
+        i {
+          position: absolute;
+          left: 0;
+          font-size: 1.3em;
+        }
+      }
+    }
+  }
+  
+  .panel-open {
+    .panel-heading {
+      h4 a {
+        color: @color-dark-orange;
+        i {
+          &:before {
+            content: '\f146';
+          }
+        }
+      }
+    }
+  }
+  .panel-body {
+    padding: 0;
+    border-top: 0;
+  }
+  .excess-tabs {
+    .clearfix;
+    margin-left: 30px;
+    .tabs-label {
+      float: left;
+      height: 2.5em;
+      line-height: 2.5em;
+      font-size: 18px;
+    }
+    ul {
+      float: left;
+      .clearfix;
+      height: 2.5em;
+      margin: 0;
+      padding: 0;
+      li {
+        font-size: 18px;
+        padding: 0;
+        list-style: none;
+        float: left;
+        height: 2.5em;
+        line-height: 2.5em;
+        overflow: hidden;
+        a {
+          color: #333;
+          position: relative;
+          padding: 0 10px;
+          display: block;
+          &:after {
+            content: ' ';
+            display: block;
+            position: absolute;
+            width: 1px;
+            height: 14px;
+            background: #323232;
+            font-size: 0;
+            top: 50%;
+            margin-top: -7px;
+            right: 0;
+          }
+        }
+        &.active {
+          a {
+            font-weight: 600;
+            &:before {
+              position: absolute;
+              bottom: 0;
+              height: 0;
+              left: 50%;
+              margin-left: -9px;
+              content: ' ';
+              display: block;
+              border-bottom: 8px solid #f7f7f7;
+              border-left: 9px solid transparent;
+              border-right: 9px solid transparent;
+            }
+          }
+        }
+        &:last-child {
+          a {
+            &:after {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .excess-tab-pane {
+    background: #f7f7f7;
+    padding: 20px;
+  }
+  
+  .next-checkin {
+    font-size: 18px;
+    a {color: #323232;}
+  }
+  
+  .more-units {
+    font-size: 16px;
+    font-weight: 400;
+    color: @color-green;
+    a {
+      color: @color-green;
     }
   }
 }

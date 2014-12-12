@@ -1,0 +1,27 @@
+[11-Dec-2014 22:37:46 America/New_York] PHP Warning:  include(/home/owladmin/vhosts/tan/templates/.php): failed to open stream: No such file or directory in /home/owladmin/vhosts/tan/src/Document.php on line 30
+[11-Dec-2014 22:37:46 America/New_York] PHP Warning:  include(): Failed opening '/home/owladmin/vhosts/tan/templates/.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/owladmin/vhosts/tan/src/Document.php on line 30
+[11-Dec-2014 22:38:05 America/New_York] PHP Warning:  include(/home/owladmin/vhosts/tan/templates/.php): failed to open stream: No such file or directory in /home/owladmin/vhosts/tan/src/Document.php on line 30
+[11-Dec-2014 22:38:05 America/New_York] PHP Warning:  include(): Failed opening '/home/owladmin/vhosts/tan/templates/.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/owladmin/vhosts/tan/src/Document.php on line 30
+[11-Dec-2014 22:38:10 America/New_York] PHP Warning:  include(/home/owladmin/vhosts/tan/templates/.php): failed to open stream: No such file or directory in /home/owladmin/vhosts/tan/src/Document.php on line 30
+[11-Dec-2014 22:38:10 America/New_York] PHP Warning:  include(): Failed opening '/home/owladmin/vhosts/tan/templates/.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/owladmin/vhosts/tan/src/Document.php on line 30
+[11-Dec-2014 23:31:36 America/New_York] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 133431296 bytes) in /home/owladmin/vhosts/tan/templates/content/excess-inventory.php on line 25
+[11-Dec-2014 23:32:00 America/New_York] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 133431296 bytes) in /home/owladmin/vhosts/tan/templates/content/excess-inventory.php on line 25
+[11-Dec-2014 23:32:10 America/New_York] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 133431296 bytes) in /home/owladmin/vhosts/tan/templates/content/excess-inventory.php on line 25
+[11-Dec-2014 23:48:37 America/New_York] PHP Warning:  include(/home/owladmin/vhosts/tan/templates/.php): failed to open stream: No such file or directory in /home/owladmin/vhosts/tan/src/Document.php on line 30
+[11-Dec-2014 23:48:37 America/New_York] PHP Warning:  include(): Failed opening '/home/owladmin/vhosts/tan/templates/.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/owladmin/vhosts/tan/src/Document.php on line 30
+[11-Dec-2014 23:48:37 America/New_York] PHP Warning:  include(/home/owladmin/vhosts/tan/templates/.php): failed to open stream: No such file or directory in /home/owladmin/vhosts/tan/src/Document.php on line 30
+[11-Dec-2014 23:48:37 America/New_York] PHP Warning:  include(): Failed opening '/home/owladmin/vhosts/tan/templates/.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/owladmin/vhosts/tan/src/Document.php on line 30
+[12-Dec-2014 00:27:34 America/New_York] PHP Fatal error:  Call to a member function modify() on a non-object in /home/owladmin/vhosts/tan/templates/content/excess-inventory.php on line 64
+[12-Dec-2014 00:35:24 America/New_York] PHP Fatal error:  Uncaught exception 'Less_Exception_Chunk' with message 'ParseError: missing closing `}` in destinations.less on line 620, column 21
+618)         &:last-child {
+619)           a {
+620)             &:after {
+621)               display: none;
+622)             }
+623)           }' in /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Parser.php:480
+Stack trace:
+#0 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Parser.php(313): Less_Parser->GetRules('/home/owladmin/...')
+#1 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Import.php(261): Less_Parser->parseFile('/home/owladmin/...', '/assets/css', true)
+#2 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Import.php(189): Less_Tree_Import->ParseImport('/home/owladmin/...', '/assets/css', Object(Less_Environment))
+#3 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Ruleset.php(248): Less_Tree_Import->compile(Object(Less_Environment))
+#4 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tr in /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Parser.php on line 480

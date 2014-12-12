@@ -29,13 +29,16 @@
             <a href="/destinations/by-region">Destinations</a>
             <ul>
               <li>
-                <a href="#">Sub Item 1</a>
+                <a href="/destinations/by-region">By Region</a>
               </li>
               <li>
-                <a href="#">Sub Item 2 has a longer title</a>
+                <a href="/destinations/by-date">By Date</a>
               </li>
               <li>
-                <a href="#">Sub Item 3</a>
+                <a href="/destinations/by-activity">By Activity</a>
+              </li>
+              <li>
+                <a href="/excess-inventory">Excess Inventory</a>
               </li>
             </ul>
           </li>

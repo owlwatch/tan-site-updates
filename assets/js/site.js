@@ -252,4 +252,12 @@ jQuery(function($){
       container   :'body'
     });
   })();
+	
+	(function collapsibles(){
+		$(document).on('show.bs.collapse hide.bs.collapse', '.panel-collapse', function(e){
+			$(e.currentTarget).parents('.panel').first().toggleClass(
+				'panel-open', e.type == 'show'
+			)
+		});
+	})();
 });

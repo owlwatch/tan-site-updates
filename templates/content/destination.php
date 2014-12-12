@@ -13,7 +13,7 @@ $property = \Tan\Utility::generateProperty();
           foreach( $property->images as $image ){
             ?>
           <div class="swiper-slide">
-            <img src="<?= $image->full ?>" />
+            <img src="<?= $image->lg ?>" />
           </div>  
             <?php
           }
@@ -35,7 +35,7 @@ $property = \Tan\Utility::generateProperty();
           foreach( $property->images as $i => $image ){
             ?>
           <div class="col-xs-3">
-            <a href="<?= $image->full ?>" data-image-index="<?= $i ?>" class="<?= $i === 0 ? 'active' : '' ?>">
+            <a href="<?= $image->lg ?>" data-image-index="<?= $i ?>" class="<?= $i === 0 ? 'active' : '' ?>">
               <img src="<?= $image->thmb ?>" />
             </a>
           </div>
