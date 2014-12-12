@@ -1,2 +1,3 @@
 #exclude the tmp directory
 tmp
+error_log
