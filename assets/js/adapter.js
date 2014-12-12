@@ -176,6 +176,22 @@ if ( !TAN.Adapter ) TAN.Adapter = {};
         }
         
         return response;
+      },
+      
+      updateItem : function(i, item){
+        var response = $.Deferred();
+        if ( window.localStorage && window.localStorage.cart ) {
+          var cart = JSON.parse( window.localStorage.cart );
+          if ( cart[i] ) {
+            cart[i] = item;
+            window.localStorage.cart = JSON.stringify( cart );
+          }
+        }
+        else {
+          response.reject()
+        }
+        
+        return response;
       }
     }
     

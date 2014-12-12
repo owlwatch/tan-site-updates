@@ -85,3 +85,7 @@ Stack trace:
 #2 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Import.php(189): Less_Tree_Import->ParseImport('/home/owladmin/...', '/assets/css', Object(Less_Environment))
 #3 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Ruleset.php(248): Less_Tree_Import->compile(Object(Less_Environment))
 #4 /home/owladmin/vhosts/tan/ven in /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Parser.php on line 480
+[12-Dec-2014 09:17:06 America/New_York] PHP Warning:  include(/home/owladmin/vhosts/tan/templates/.php): failed to open stream: No such file or directory in /home/owladmin/vhosts/tan/src/Document.php on line 30
+[12-Dec-2014 09:17:06 America/New_York] PHP Warning:  include(): Failed opening '/home/owladmin/vhosts/tan/templates/.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/owladmin/vhosts/tan/src/Document.php on line 30
+[12-Dec-2014 09:19:56 America/New_York] PHP Warning:  include(/home/owladmin/vhosts/tan/templates/.php): failed to open stream: No such file or directory in /home/owladmin/vhosts/tan/src/Document.php on line 30
+[12-Dec-2014 09:19:56 America/New_York] PHP Warning:  include(): Failed opening '/home/owladmin/vhosts/tan/templates/.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/owladmin/vhosts/tan/src/Document.php on line 30

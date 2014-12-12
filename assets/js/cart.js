@@ -27,7 +27,10 @@ window.TAN = window.TAN || {};
     $(window).on('scroll resize', $.proxy(this.fixCart, this) );
     this.$cart.on('click', '[data-nav]', $.proxy(this.onCartNavClick, this));
     this.sync();
-    $('#cart-footer, #cart-modal').on('click', '[data-action="cancel"]', $.proxy(this.onCancelClick, this));
+    $('#cart-footer, #cart-modal')
+      .on('click', '[data-action="cancel"]', $.proxy(this.onCancelClick, this))
+      .on('change', 'input[name=vap]', $.proxy(this.onVapChange, this))
+    
     this.countdown();
   };
   
@@ -104,6 +107,21 @@ window.TAN = window.TAN || {};
         active = total-1;
       }
       return active;
+    },
+    
+    findById : function( uid ){
+      var found = false;
+      $.each( this.items, function(i, item){
+        if( item.uid == uid ) {
+          found = i;
+          return false;
+        }
+        return true;
+      });
+      if ( found !== false) {
+        return this.items[found];
+      }
+      return false;
     },
     
     removeById : function( uid ){
@@ -201,6 +219,15 @@ window.TAN = window.TAN || {};
       $a.parent()
         .toggleClass('open', e.type == 'show')
         
+    },
+    
+    onVapChange : function(e){
+      var id = $(e.currentTarget).parents('[data-uid]').data('uid');
+      var item = this.findById(id);
+      var i = this.items.indexOf( item );
+      item.vapEnabled = $(e.currentTarget).is(':checked');
+      TAN.Adapter.cart.updateItem(i, item);
+      $('[data-uid="'+id+'"] input[name=vap]').attr('checked',item.vapEnabled?'checked':null);
     },
     
     onCartNavClick : function(e){
