@@ -18,7 +18,30 @@ jQuery(function($){
 	
 	(function user_menu(){
 		$(window).on('auth.tan', function(e, user){
-			
+			$('body').addClass('logged-in');
+		});
+		$(window).on('logout.tan', function(e, user){
+			$('body').removeClass('logged-in');
+		});
+	})();
+	
+	(function logout(){
+		$(document).on('click', '[data-action="logout"]', function(e){
+			e.preventDefault();
+			TAN.Adapter.user.logout();
+		});
+	})();
+	
+	(function loginForm(){
+		$('#header').on('submit', '[data-action="login"]', function(e){
+			e.preventDefault();
+			var $form = $(e.currentTarget);
+			TAN.Adapter.user.authenticate(
+				$form.find('[name=username]').val(),
+				$form.find('[name=password]').val()
+			).done( function(success){
+				
+			});
 		});
 	})();
 	

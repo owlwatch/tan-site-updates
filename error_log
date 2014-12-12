@@ -25,3 +25,63 @@ Stack trace:
 #2 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Import.php(189): Less_Tree_Import->ParseImport('/home/owladmin/...', '/assets/css', Object(Less_Environment))
 #3 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Ruleset.php(248): Less_Tree_Import->compile(Object(Less_Environment))
 #4 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tr in /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Parser.php on line 480
+[12-Dec-2014 01:41:04 America/New_York] PHP Fatal error:  Uncaught exception 'Less_Exception_Chunk' with message 'ParseError: Unexpected input in header.less on line 119, column 13
+117)           padding-top: 10px;
+118)           &:before {
+119)             position: absolute;
+120)             top: 0;
+121)             right: 15px;
+122)             width: 0;' in /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Parser.php:480
+Stack trace:
+#0 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Parser.php(313): Less_Parser->GetRules('/home/owladmin/...')
+#1 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Import.php(261): Less_Parser->parseFile('/home/owladmin/...', '/assets/css', true)
+#2 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Import.php(189): Less_Tree_Import->ParseImport('/home/owladmin/...', '/assets/css', Object(Less_Environment))
+#3 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Ruleset.php(248): Less_Tree_Import->compile(Object(Less_Environment))
+#4 /home/owladmin/vhosts/tan/vendor/oye in /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Parser.php on line 480
+[12-Dec-2014 01:49:02 America/New_York] PHP Fatal error:  Uncaught exception 'Less_Exception_Compiler' with message '.unstyled-list is undefined' in /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Mixin/Call.php:148
+Stack trace:
+#0 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Ruleset.php(147): Less_Tree_Mixin_Call->compile(Object(Less_Environment))
+#1 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Ruleset.php(88): Less_Tree_Ruleset->EvalMixinCalls(Object(Less_Tree_Ruleset), Object(Less_Environment), 1)
+#2 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Ruleset.php(94): Less_Tree_Ruleset->compile(Object(Less_Environment))
+#3 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Ruleset.php(94): Less_Tree_Ruleset->compile(Object(Less_Environment))
+#4 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Ruleset.php(94): Less_Tree_Ruleset->compile(Object(Less_Environment))
+#5 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Ruleset.php(94): Less_Tree_Ruleset->c in /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Mixin/Call.php on line 148
+[12-Dec-2014 01:49:13 America/New_York] PHP Fatal error:  Uncaught exception 'Less_Exception_Chunk' with message 'ParseError: Unexpected input in header.less on line 131, column 29
+129)             border-bottom-color: rgba(0,0,0,0.85);
+130)           }
+131)           .dropdown-content {
+132)             min-width: 200px;
+133)             padding: 15px;
+134)             background: #000;' in /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Parser.php:480
+Stack trace:
+#0 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Parser.php(313): Less_Parser->GetRules('/home/owladmin/...')
+#1 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Import.php(261): Less_Parser->parseFile('/home/owladmin/...', '/assets/css', true)
+#2 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Import.php(189): Less_Tree_Import->ParseImport('/home/owladmin/...', '/assets/css', Object(Less_Environment))
+#3 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Ruleset.php(248): Less_Tree_Import->compile(Object(Less_Environment))
+#4 /home in /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Parser.php on line 480
+[12-Dec-2014 02:02:58 America/New_York] PHP Fatal error:  Uncaught exception 'Less_Exception_Chunk' with message 'ParseError: Unexpected input in header.less on line 113, column 26
+111)           line-height: 2em;
+112)           
+113)           .label-outside {
+114)             font-size: 1em;
+115)             font-weight: 400;
+116)             position: absolute;' in /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Parser.php:480
+Stack trace:
+#0 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Parser.php(313): Less_Parser->GetRules('/home/owladmin/...')
+#1 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Import.php(261): Less_Parser->parseFile('/home/owladmin/...', '/assets/css', true)
+#2 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Import.php(189): Less_Tree_Import->ParseImport('/home/owladmin/...', '/assets/css', Object(Less_Environment))
+#3 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Ruleset.php(248): Less_Tree_Import->compile(Object(Less_Environment))
+#4 /home/owladmin/vhosts/tan/ven in /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Parser.php on line 480
+[12-Dec-2014 02:03:00 America/New_York] PHP Fatal error:  Uncaught exception 'Less_Exception_Chunk' with message 'ParseError: Unexpected input in header.less on line 113, column 26
+111)           line-height: 2em;
+112)           
+113)           .label-outside {
+114)             font-size: 1em;
+115)             font-weight: 400;
+116)             position: absolute;' in /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Parser.php:480
+Stack trace:
+#0 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Parser.php(313): Less_Parser->GetRules('/home/owladmin/...')
+#1 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Import.php(261): Less_Parser->parseFile('/home/owladmin/...', '/assets/css', true)
+#2 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Import.php(189): Less_Tree_Import->ParseImport('/home/owladmin/...', '/assets/css', Object(Less_Environment))
+#3 /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Tree/Ruleset.php(248): Less_Tree_Import->compile(Object(Less_Environment))
+#4 /home/owladmin/vhosts/tan/ven in /home/owladmin/vhosts/tan/vendor/oyejorge/less.php/lib/Less/Parser.php on line 480

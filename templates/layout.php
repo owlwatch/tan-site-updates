@@ -5,7 +5,7 @@
     $this->tmpl('head');
     ?>
   </head>
-  <body>
+  <body class="<?= $_COOKIE['logged-in'] ? 'logged-in' : '' ?>">
     <?php
     if( @$_REQUEST['alert'] ) $this->tmpl('layout/alert');
     $this->tmpl('layout/header');

@@ -150,6 +150,9 @@
       </div>
       <a href="#cart-modal" data-toggle="modal">View All</a>
     </script>
+    <script class="view-one-tmpl" type="text/x-handlebars-template">
+      <a href="#cart-modal" data-toggle="modal">View Details</a>
+    </script>
     <script class="property-tmpl" type="text/x-handlebars-template">
       <div class="row property-row" data-uid="{{uid}}">
         <div class="col-xs-11">

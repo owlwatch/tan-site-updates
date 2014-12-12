@@ -6,7 +6,8 @@ window.TAN = window.TAN || {};
     this.tmpl = {
       modalBody : Handlebars.compile($('#cart-modal .body-tmpl').html()),
       cartProperty : Handlebars.compile($('#cart-footer .property-tmpl').html()),
-      viewAll : Handlebars.compile($('#cart-footer .view-all-tmpl').html())
+      viewAll : Handlebars.compile($('#cart-footer .view-all-tmpl').html()),
+      viewOne : Handlebars.compile($('#cart-footer .view-one-tmpl').html())
     };
     Handlebars.registerPartial("property_modal", $("#cart-modal .property-tmpl").html());
     this.$cart = $('#cart-footer');
@@ -264,10 +265,10 @@ window.TAN = window.TAN || {};
     updateViewAll : function(){
       var $ct = this.$cart.find('.view-all-container');
       $ct.html(
-        this.tmpl.viewAll({
+        this.items.length > 1 ? this.tmpl.viewAll({
           cur     :this.getActiveIndex()+1,
           total   :this.items.length
-        })
+        }) : this.tmpl.viewOne({})
       );
     },
     

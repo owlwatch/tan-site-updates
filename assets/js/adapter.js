@@ -57,6 +57,15 @@ if ( !TAN.Adapter ) {
         var deferred = $.Deferred();
         deferred.resolve(true);
         return deferred.promise();
+      },
+      
+      logout : function(){
+        $.removeCookie('logged-in');
+        $(window).trigger('logout.tan', [true] )
+        
+        var deferred = $.Deferred();
+        deferred.resolve(true);
+        return deferred.promise();
       }
     },
     

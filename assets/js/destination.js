@@ -238,7 +238,7 @@ jQuery(function($){
             
         TAN.Adapter.user.isLoggedIn()
           .done(function(result){
-            if ( 0 && !result ) {
+            if ( !result ) {
               _this.slideToPanel('login', true);
             }
             else {
