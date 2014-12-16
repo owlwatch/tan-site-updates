@@ -37,3 +37,45 @@ leaving them in this project so the dependencies can be found easily.
 > This documentation is still under development in conjunction with the remainder
 > of the template and asset files. We will be documenting how to implement javascript
 > shortly...
+
+#### Cart Object
+
+The cart object (see assets/js/cart.js) has an `items` property that contains objects representing the different holds the user has in their cart. Each of these `item` in that array contains the following structure. 
+
+```javascript
+{
+  "property": {
+    "id": 48336,
+    "thumb": "path_to_image",
+    "images": [
+      {
+        "full": "path_to_image",
+        "lg": "path_to_image",
+        "thmb": "path_to_image"
+      }
+    ],
+    "is_plus": true,
+    "is_excess_inventory": false,
+    "title": "Name of Property",
+    "address": "2396 Old Scenic Highway 98",
+    "city": "Mirimar Beach",
+    "state": "Florida",
+    "checkinDay": "Sunday",
+    "amenities": {
+      "resort": "HTML String"
+    }
+  },
+  "room": {
+    "bedrooms": 1,
+    "rate": "$248",
+    "vap": "$30"
+  },
+  "vapEnabled": true,
+  "date": "2014-12-28",
+  "dates": "12/28/2014 - 01/04/2015",
+  "expiration": 1418765826263, // javascript timestamp
+  "uid": "1418764926263-0", // unique id for the "hold"
+}
+```
+
+*Important* this is a structure that was developed for demo data and does not necessarily have to be strictly followed. The most important properties are the `uid`, `dates`, and `expiration`. If the structure differs in implementation, the Handlebar templates will need to be adjusted to reflect the change (see templates/layout/footer.php)
