@@ -229,7 +229,7 @@ $property = \Tan\Utility::generateProperty();
                   <div class="checkbox">
                     <label class="detail">
                       <input name="vap" type="checkbox" checked="checked"/>
-                      <span class="name">VAP ?:</span>
+                      <span class="name">VAP <a href="#" data-toggle="tooltip" title="What is VAP?">?</a>:</span>
                       <span class="value">{{vap}}</span>
                     </label>
                   </div>

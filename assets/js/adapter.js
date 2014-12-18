@@ -177,7 +177,9 @@ if ( !TAN.Adapter ) TAN.Adapter = {};
         
         return response;
       },
-      
+      /**
+       * Update an item in the cart
+       */
       updateItem : function(i, item){
         var response = $.Deferred();
         if ( window.localStorage && window.localStorage.cart ) {

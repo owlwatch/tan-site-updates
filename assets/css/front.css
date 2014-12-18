@@ -4576,6 +4576,9 @@ fieldset[disabled] .btn-green.active {
 .detail.checkbox {
   margin: 0;
 }
+.detail a {
+  color: #0095d5;
+}
 .tan-select-wrap {
   position: relative;
   height: 2.6em;

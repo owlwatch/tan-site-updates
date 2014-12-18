@@ -102,7 +102,7 @@
               <div class="detail checkbox">
                 <label>
                   <input type="checkbox" name="vap" {{#if vapEnabled}}checked="checked"{{/if}} />
-                  <span class="name">VAP ?:</span>
+                  <span class="name">VAP <a href="#" data-toggle="tooltip" title="What is VAP?">?</a>:</span>
                   <span class="value">{{room.vap}}</span>
                 </label>
               </div>
@@ -176,7 +176,7 @@
                   <div class="detail checkbox">
                     <label>
                       <input type="checkbox" name="vap" {{#if vapEnabled}}checked="checked"{{/if}} />
-                      <span class="name">VAP ?:</span>
+                      <span class="name">VAP <a href="#" data-toggle="tooltip" title="What is VAP?">?</a>:</span>
                       <span class="value">{{room.vap}}</span>
                     </label>
                   </div>
@@ -197,6 +197,5 @@
         </div>
       </div>
     </script>
-    <script 
   </div>
 </div>
