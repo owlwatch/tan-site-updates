@@ -88,13 +88,21 @@ if ( !TAN.Adapter ) TAN.Adapter = {};
        * @return {promise}  promise
        */
       authenticate : function(username, password){
+        return $.post('/ajax/login',{
+          username: username,
+          password: password
+        }).done(function(response){
+          
+          if ( response && response.success ) {
+            $(window).trigger('auth.tan', [response.user] );
+          }
+          
+        }).fail(function(response){
+          
+        }).always(function(response){
+          
+        });
         
-        $.cookie('logged-in', '1', {path:'/'});
-        $(window).trigger('auth.tan', [true, fakeUser] )
-        
-        var deferred = $.Deferred();
-        deferred.resolve(true, fakeUser);
-        return deferred.promise();
       },
       
       /**
@@ -103,12 +111,13 @@ if ( !TAN.Adapter ) TAN.Adapter = {};
        * @return {promise}  promise
        */
       logout : function(){
-        $.removeCookie('logged-in');
-        $(window).trigger('logout.tan', [true] )
         
-        var deferred = $.Deferred();
-        deferred.resolve(true);
-        return deferred.promise();
+        return $.post('/ajax/logout')
+          .done(function( response ){
+            if ( response && response.success ) {
+              $(window).trigger('logout.tan', [true] )
+            }
+          });
       }
     },
     

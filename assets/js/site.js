@@ -39,7 +39,18 @@ jQuery(function($){
 			TAN.Adapter.user.authenticate(
 				$form.find('[name=username]').val(),
 				$form.find('[name=password]').val()
-			).done( function(success){
+			).done( function(response){
+				if ( response && response.success ) {
+					// don't need to do anything, the form should be replaced when the
+					// 'auth.tan' event is triggered on the window.
+					return;
+				}
+				if ( response.errors ) {
+					alert( repsonse.errors.join('\n') );
+				}
+			}).fail( function(repsonse){
+				alert( 'An error occurred!' );
+			}).always( function(response){
 				
 			});
 		});
