@@ -91,10 +91,7 @@ window.TAN = window.TAN || {};
     },
     
     remove : function(item){
-      var i = this.items.indexOf( item );
-      if (i > -1) {
-        this.removeAt( i );
-      }
+      this.removeById( item.uid );
     },
     
     getActiveIndex : function() {
@@ -125,43 +122,43 @@ window.TAN = window.TAN || {};
     },
     
     removeById : function( uid ){
-      var found = false;
+      var index = false, _this = this;
       $.each( this.items, function(i, item){
-        if( item.uid == uid ) {
-          found = i;
+        if ( uid == item.uid ){
+          index = i;
           return false;
         }
         return true;
       });
-      if ( found !== false) {
-        this.removeAt(found);
+      
+      if ( index === false ) {
+        var response = $.Deferred();
+        response.reject();
+        return response.promise();
       }
+      
+      return TAN.Adapter.cart.removeById( uid )
+        .done(function( response ){
+          if ( response && response.cart ) {
+            _this.items.splice(index,1);
+            _this.$cart.trigger('itemremove.cart.tan', [index, response.item]);
+          }
+          else {
+            // there was an error
+            
+          }
+        })
+        .fail(function(){
+          
+        });
     },
     
     removeAt : function(index){
-      var
-        _this = this,
-        response = $.Deferred()
-      ;
-      
       if ( index < this.items.length ) {
-        TAN.Adapter.cart.removeAt( index )
-          .done(function( index, item ){
-            if ( item ) {
-              _this.items.splice(index,1);
-              _this.$cart.trigger('itemremove.cart.tan', [index, item]);
-              response.resolve(index, item);
-            }
-            else {
-              // there was an error
-              response.reject();
-            }
-          })
-          .fail(function(){
-            repsonse.reject();
-          });
+        return TAN.Adapter.cart.removeById( this.items[index].uid );
       }
-      
+      var response = $.Deferred();
+      repsonse.reject();
       return response.promise();
     },
     
@@ -223,10 +220,8 @@ window.TAN = window.TAN || {};
     
     onVapChange : function(e){
       var id = $(e.currentTarget).parents('[data-uid]').data('uid');
-      var item = this.findById(id);
-      var i = this.items.indexOf( item );
       item.vapEnabled = $(e.currentTarget).is(':checked');
-      TAN.Adapter.cart.updateItem(i, item);
+      TAN.Adapter.cart.updateItem(id, item);
       $('[data-uid="'+id+'"] input[name=vap]').attr('checked',item.vapEnabled?'checked':null);
     },
     

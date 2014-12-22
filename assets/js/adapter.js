@@ -127,43 +127,50 @@ if ( !TAN.Adapter ) TAN.Adapter = {};
        */
       add : function(item){
         
-        if ( window.localStorage ) {
-          var cart = window.localStorage.cart;
-          if ( !cart ) {
-            cart = [];
-          }
-          else{
-            cart = JSON.parse( cart );
-            if ( !$.isArray(cart) ) cart=[];
-          }
-          item.expiration = new Date().getTime() + (1000 * 60 * 15);
-          item.uid = new Date().getTime()+'-'+(id++);
-          cart.push(item);
-          window.localStorage.cart = JSON.stringify( cart );
-        }
-        
         var response = $.Deferred();
-        response.resolve(true);
-        return response;
+        
+        $.post('/ajax/addItemToCart', {
+          item: item
+        }).done(function(res){
+          if ( res && res.success ) {
+            item.uid = res.item.uid;
+            item.expiration = res.item.expiration;
+            response.resolve(true);
+          }
+          else {
+            response.reject();
+          }
+        }).fail(function(){
+          response.reject();
+        });
+        
+        return response.promise();
       },
       
       /**
        * Remove an item at the specified array index from the
        * cart
        */
-      removeAt : function(index){
+      removeById : function(uid){
+        
         var response = $.Deferred();
         
-        if ( window.localStorage && window.localStorage.cart ) {
-          var cart = window.localStorage.cart;
-          cart = JSON.parse( cart );
-          if ( cart && cart.length && index < cart.length) {
+        $.post('ajax/removeItemFromCart', {
+          id: uid
+        })
+          .done(function(res){
             
-            var removed = cart.splice(index,1);
-            response.resolve(index, removed[0] );
-            window.localStorage.cart = JSON.stringify( cart );
-          }
-        }
+            if ( res && res.success ) {
+              response.resolve( res );
+            }
+            else {
+              response.reject();
+            }
+          })
+          .fail(function(){
+            response.reject();
+          })
+        
         
         return response.promise();
       },
@@ -173,36 +180,53 @@ if ( !TAN.Adapter ) TAN.Adapter = {};
        */
       sync : function(){
         var response = $.Deferred();
-        if ( window.localStorage && window.localStorage.cart ) {
-          var cart = JSON.parse( window.localStorage.cart );
-          if( cart && $.isArray(cart) ) response.resolve( cart );
-          else {
-            response.resolve([]);
-          }
-        }
-        else {
-          response.resolve([])
-        }
         
-        return response;
+        /**
+         * Option 1. Get the Cart via ajax
+         *
+        $.post('ajax/getCart')
+          .done(function(res){
+            if ( res && res.success ) {
+              response.resolve( res.cart );
+            }
+            else {
+              response.reject();
+            }
+          })
+          .fail(function(){
+            response.reject();
+          })
+        */
+        var cart = $('#cart-footer').data('cart');
+        if ( !$.isArray(cart) ) {
+          cart = [];
+        }
+        response.resolve(cart);
+        return response.promise();
       },
       /**
        * Update an item in the cart
        */
-      updateItem : function(i, item){
+      updateItem : function(id, item){
         var response = $.Deferred();
-        if ( window.localStorage && window.localStorage.cart ) {
-          var cart = JSON.parse( window.localStorage.cart );
-          if ( cart[i] ) {
-            cart[i] = item;
-            window.localStorage.cart = JSON.stringify( cart );
-          }
-        }
-        else {
-          response.reject()
-        }
         
-        return response;
+        $.post('ajax/updateItemInCart', {
+          item: item,
+          id: id
+        })
+          .done(function(res){
+            if ( res && res.success ) {
+              response.resolve( res.cart );
+            }
+            else {
+              response.reject();
+            }
+          })
+          .fail(function(){
+            response.reject();
+          })
+        
+        return response.promise();
       }
     }
     

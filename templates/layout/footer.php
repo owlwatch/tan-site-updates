@@ -131,7 +131,7 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<div id="cart-footer">
+<div id="cart-footer" data-cart="<?= htmlentities( json_encode( $_SESSION['cart'] ) ) ?>">
   <div class="page">
     <div class="items swiper-container ">
       <div class="swiper-wrapper">
