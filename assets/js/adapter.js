@@ -129,6 +129,19 @@ if ( !TAN.Adapter ) TAN.Adapter = {};
         
         var response = $.Deferred();
         
+        /**
+         * Replace with your endpoint. A successful response should
+         * be a json object with the following properties
+         *
+         *  Takes an "item" object as a parameter
+         *
+         *  The returned item should have an uid property
+         *  and an 'expiration' time in milliseconds
+         *
+         *  success : boolean
+         *  cart : Array - the array of cart items
+         *  item : Object - the removed item
+         */
         $.post('/ajax/addItemToCart', {
           item: item
         }).done(function(res){
@@ -154,6 +167,19 @@ if ( !TAN.Adapter ) TAN.Adapter = {};
       removeById : function(uid){
         
         var response = $.Deferred();
+        
+        
+        /**
+         * Replace with your endpoint. A successful response should
+         * be a json object with the following properties
+         *
+         * This endpoint takes "id" as a parameter which would
+         * be the hold id.
+         *
+         *  success : boolean
+         *  cart : Array - the array of cart items
+         *  item : Object - the removed item
+         */
         
         $.post('ajax/removeItemFromCart', {
           id: uid
@@ -197,6 +223,10 @@ if ( !TAN.Adapter ) TAN.Adapter = {};
             response.reject();
           })
         */
+        /**
+         * Option 2. Grab inline to avoid the extra
+         * http request.
+         */
         var cart = $('#cart-footer').data('cart');
         if ( !$.isArray(cart) ) {
           cart = [];
@@ -204,11 +234,20 @@ if ( !TAN.Adapter ) TAN.Adapter = {};
         response.resolve(cart);
         return response.promise();
       },
+      
       /**
        * Update an item in the cart
        */
       updateItem : function(id, item){
         var response = $.Deferred();
+        
+        /**
+         * Replace with your endpoint. A successful response should
+         * be a json object with the following properties
+         *
+         *  success : boolean
+         *  cart : Array - the array of cart items
+         */
         
         $.post('ajax/updateItemInCart', {
           item: item,
