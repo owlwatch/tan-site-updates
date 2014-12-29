@@ -47,6 +47,6 @@
 <div class="ei-checkbox checkbox">
   <label>
     <input type="checkbox" name="ei-only" />
-    Only show properties with excess inventory dates available.  
+    <span>Only show properties with excess inventory dates available.</span>
   </label>
 </div>
