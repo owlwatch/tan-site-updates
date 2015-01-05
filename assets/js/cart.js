@@ -219,10 +219,16 @@ window.TAN = window.TAN || {};
     },
     
     onVapChange : function(e){
+      
       var id = $(e.currentTarget).parents('[data-uid]').data('uid');
+      var item = this.findById( id );
       item.vapEnabled = $(e.currentTarget).is(':checked');
+      var checked = item.vapEnabled ? true : false;
+      $('[data-uid="'+id+'"] input[name="vap"]')
+        .not(e.currentTarget).prop('checked', checked);
+        
+      
       TAN.Adapter.cart.updateItem(id, item);
-      $('[data-uid="'+id+'"] input[name=vap]').attr('checked',item.vapEnabled?'checked':null);
     },
     
     onCartNavClick : function(e){

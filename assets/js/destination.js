@@ -262,17 +262,17 @@ jQuery(function($){
         this.slideToPanel('book', true);
         
         var
-          $panel = this.$el.find('[data-booking-panel=book]')
+          $panel = this.$el.find('[data-booking-panel=book]'),
           item = this.queue.pop(),
-          _this = this
+          _this = this,
           $btn = item.$btn
         ;
-        
-        delete item.$btn;
         
         $panel.addClass('loading');
         var btnHTML = $btn.html();
         $btn.html('Booking...').addClass('disabled');
+        
+        delete item.$btn;
         
         TAN.cart().add( item, true )
           .always( function(){

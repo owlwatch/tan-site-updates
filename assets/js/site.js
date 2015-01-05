@@ -294,4 +294,16 @@ jQuery(function($){
 			)
 		});
 	})();
+	
+	(function imagemapster_ie10_fix(){
+		$.mapster.AreaData.prototype.areas = function(){
+			var i,result=[];
+			for (i=0;i<this.areasXref.length;i++) {
+				if ( this.owner.mapAreas[this.areasXref[i]] ) {
+					result.push(this.owner.mapAreas[this.areasXref[i]]);
+				}
+			}
+			return result;
+		}
+	})();
 });
